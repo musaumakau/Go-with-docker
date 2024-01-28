@@ -1,0 +1,44 @@
+# This file describes a Kubernetes Deployment, which manages a set of pods.
+
+apiVersion: apps/v1
+# Specifies the Kubernetes API version used for this resource.
+
+kind: Deployment
+# Indicates that this is a Deployment resource, used to manage application deployments.
+
+metadata:
+  name: memesoftheday-deployment
+  # Assigns a name to the Deployment, in this case, "memesoftheday-deployment."
+
+  labels:
+    app: memesoftheday
+    # Labels are used to organize and select resources. This label is named "app" and set to "memesoftheday."
+
+spec:
+  replicas: 3
+  # Specifies that the desired number of replicas (pods) is 3.
+
+  selector:
+    matchLabels:
+      app: memesoftheday
+    # Defines how the Deployment identifies which pods to manage based on labels.
+
+  template:
+    metadata:
+      labels:
+        app: memesoftheday
+      # Labels assigned to the pods created by this Deployment.
+
+    spec:
+      containers:
+      - name: memesostheday-container
+        # Specifies the name of the container within the pod.
+
+        image: 5936/memesoftheday-image:main
+        # Specifies the Docker image to be used for the container, pulled from "harisheoran/memesoftheday-image" with the "main" tag.
+
+        ports:
+        - containerPort: 3000
+        # Specifies that the container within the pod will listen on port 3000.
+
+        imagePullPolicy: If

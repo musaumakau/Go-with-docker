@@ -1,0 +1,29 @@
+# This file describes a Kubernetes Service, which exposes pods to the network.
+
+apiVersion: v1
+# Specifies the Kubernetes API version used for this resource.
+
+kind: Service
+# Indicates that this is a Service resource, used to expose pods.
+
+metadata:
+  name: memesoftheday-service
+  # Assigns a name to the Service, in this case, "memesoftheday-service."
+
+spec:
+  type: NodePort
+  # Specifies that the Service should be of type NodePort, making it accessible externally on each node.
+
+  selector:
+    app: memesoftheday
+    # Specifies the labels used to select pods that this service will route traffic to. In this case, pods with the label "app: memesoftheday."
+
+  ports:
+    - port: 80
+      # Specifies that the Service should be accessible on port 80 externally.
+
+      targetPort: 3000
+      # Specifies that incoming traffic on port 80 should be forwarded to the pods on port 3000.
+
+      nodePort: 30007
+      # Specifies a static port on each node (accessible externally) where the Service will be available, set to 30007.
