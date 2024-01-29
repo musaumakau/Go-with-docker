@@ -41,4 +41,4 @@ spec:
         - containerPort: 3000
         # Specifies that the container within the pod will listen on port 3000.
 
-        imagePullPolicy: If
+        imagePullPolicy: IfNotPresent
