@@ -45,7 +45,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-             image-ref: 'docker.io/memesoftheday-image:main'
+             image-ref: '${{ env.REGISTRY}}/${{ env.IMAGE_NAME }}:latest'
              format: 'table'
              #exit-code: '1' #By pass and continue if vulnerabilities found (Not recommended, testing complete devSecOps pipeline)
              ignore-unfixed: true
