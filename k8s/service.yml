@@ -11,7 +11,7 @@ metadata:
   # Assigns a name to the Service, in this case, "memesoftheday-service."
 
 spec:
-  type: NodePort
+  type: LoadBalancer
   # Specifies that the Service should be of type NodePort, making it accessible externally on each node.
 
   selector:
