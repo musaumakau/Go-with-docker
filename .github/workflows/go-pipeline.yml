@@ -54,13 +54,7 @@ jobs:
               ignore-unfixed: true
               vuln-type: 'os,library'
               severity: 'CRITICAL,HIGH'
-          - name: Upload the scan result to GitHub Security
-            uses: github/codeql-action/upload-sarif@v2
-            with:
-                sarif_file: 'trivy-image-results.sarif'
-                category: 'container scanning'
-                 
-
+          
      
         
 
