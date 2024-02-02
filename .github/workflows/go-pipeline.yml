@@ -75,6 +75,11 @@ jobs:
                     echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
                     sudo apt-get update
                     sudo apt-get install -y kubectl
+
+           - name: Debug Kubeconfig
+             run: |
+              echo ${{ secrets.KUBE_CONFIG_DATA }} | base64 --decode
+
                     
            - name: Configure kubectl
              uses: azure/k8s-set-context@v1
