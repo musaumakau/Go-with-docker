@@ -77,19 +77,15 @@ jobs:
                     sudo apt-get update
                     sudo apt-get install -y kubectl
 
-           - name: Debug Kubeconfig
-             run: |
-              echo ${{ secrets.KUBE_CONFIG_DATA }} | base64 --decode
-
-                    
-           - name: Configure kubectl
-             uses: azure/k8s-set-context@v1
-             with:
-                  kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
-              
            - name: Deploy to EKS
+             env:
+              AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}  
+              AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+              AWS_DEFAULT_REGION: "eu-west-1"  
              run: |
-                   kubectl apply -f k8s/ 
+                  aws eks update-kubeconfig --name memesoftheday-Cluster
+                      kubectl set image deployment/my-deployment my-container=my-registry/my-image:latest
+                      kubectl rollout status deployment my-deployment
               
                 
           
