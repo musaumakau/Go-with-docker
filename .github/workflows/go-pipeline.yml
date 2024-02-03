@@ -84,8 +84,8 @@ jobs:
               AWS_DEFAULT_REGION: "eu-west-1"  
              run: |
                   aws eks update-kubeconfig --name memesoftheday-Cluster
-                      kubectl set image deployment/my-deployment my-container=my-registry/my-image:latest
-                      kubectl rollout status deployment my-deployment
+                      kubectl set image deployment/deployment docker.io/memesoftheday-image:main
+                      kubectl rollout status deployment k8s/
               
                 
           
